@@ -40,3 +40,35 @@ class Line():
         x1, y1 = self.st_line.x, self.st_line.y
         x2, y2 = self.en_line.x, self.en_line.y
         canvas.create_line(x1, y1, x2, y2, fill=fill_color, width=2)
+
+class Cell():
+    def __init__(self,w,):
+        self.has_left_wall = True
+        self.has_right_wall = True
+        self.has_top_wall = True
+        self.has_bottom_wall = True
+        self._x1 = None
+        self._y1 = None
+        self._x2 = None
+        self._y2 = None
+        self._w = w
+    def draw(self, x1, y1, x2, y2):
+        self._x1 = x1
+        self._y1 = y1
+        self._x2 = x2
+        self._y2 = y2
+        if self.has_left_wall:
+            line = Line(Point(x1, y1),Point(x1, y2))
+            self._w.draw_line(line)
+        if self.has_top_wall:
+            line = Line(Point(x1, y1), Point(x2, y1))
+            self._w.draw_line(line)
+        if self.has_right_wall:
+            line = Line(Point(x2, y1), Point(x2, y2))
+            self._w.draw_line(line)
+        if self.has_bottom_wall:
+            line = Line(Point(x1, y2), Point(x2, y2))
+            self._w.draw_line(line)        
+
+        
+

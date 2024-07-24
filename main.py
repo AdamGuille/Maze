@@ -1,5 +1,5 @@
 from windowing import Window, Line, Point, Cell
-from Maze import Maze
+from maze import Maze
 
 def main():
     num_rows = 12

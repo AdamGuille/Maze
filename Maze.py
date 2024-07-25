@@ -1,5 +1,6 @@
 from windowing import Cell
 import time
+import random
 
 
 class Maze():
@@ -12,6 +13,7 @@ class Maze():
             cell_size_x,
             cell_size_y,
             win=None,
+            seed=None,
     ):
         self._cells = []
         self.x1 = x1
@@ -19,8 +21,10 @@ class Maze():
         self.num_rows = num_rows
         self.num_cols = num_cols
         self.cell_size_x = cell_size_x
-        self._cell_size_y = cell_size_y
+        self.cell_size_y = cell_size_y
         self.win = win
+        if seed is not None:
+            random.seed(seed)
 
         self._create_cells()
         self._break_entrance_and_exit()
@@ -40,9 +44,9 @@ class Maze():
         if self.win is None:
             return
         x1 = self.x1 + i * self.cell_size_x
-        y1 = self.y1 + j * self._cell_size_y 
+        y1 = self.y1 + j * self.cell_size_y 
         x2 = x1 + self.cell_size_x
-        y2 = y1 + self._cell_size_y
+        y2 = y1 + self.cell_size_y
         self._cells[i][j].draw(x1, y1, x2, y2)
         self._animate()
     

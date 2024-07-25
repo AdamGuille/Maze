@@ -52,6 +52,8 @@ class Cell():
         self._x2 = None
         self._y2 = None
         self._w = w
+        self.visited = False
+        
     def draw(self, x1, y1, x2, y2):
         if self._w is None:
             return
@@ -95,6 +97,7 @@ class Cell():
         line_color = "red"
         if undo:
             line_color = "gray"
+
         line = Line(Point(self_center_x, self_center_y), Point(to_cell_center_x, to_cell_center_y))
         self._w.draw_line(line, fill_color=line_color)
 
